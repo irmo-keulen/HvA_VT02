@@ -13,6 +13,7 @@ run the following commands (pref while in the project file):
 4) pip install Django
 
 If you get DB errors a possible fix can be to use the following commands:
+
 --> While in the main folder, there should be a file called manage.py <--
 
 1) python manage.py makemigrations
