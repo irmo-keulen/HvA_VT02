@@ -4,13 +4,16 @@
 
         <p>Topic: {{ topic }}</p>
     <p>Entries: </p>
-    <p>
-        <a href="{% url 'textEdit:new_entry' topic.id %}">add new entry</a>
-    </p>
+    <div id="add/delete_entry v1">
+        <p>
+            <a href="{% url 'textEdit:new_entry' topic.id %}">add new entry</a> -
+            <a href="{% url 'textEdit:delete_topic' topic.id %}">delete Topic</a>
+        </p>
+    </div>
     <ul>
         {% for entry in entries %}
             <li>
-                <p>{{ entry.date_added|date:'d M, Y H:i' }}</p>
+                <p>{{ entry.date_added|date:'d M, Y H:i' }} </p>
                 <p>{{ entry.text|linebreaks  }}</p>
                 <p>
                     <a href="{% url 'textEdit:edit_entry' entry.id %}">edit entry</a>

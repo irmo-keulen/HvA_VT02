@@ -1,17 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, Http404
 from django.core.urlresolvers import reverse
 from textEdit.models import Topic, Entry
 from textEdit.forms import TopicForm, EntryForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate
 
 
 def index(request):
     """ The index page of the web application
-    This is the main page of the application, this will tell something about the website.
-    It doesn't show any Topics/entries, unless its hardcoded.
-    :Access:
-        No Rights needed
     :param request:
         Request made by the routing
     :return:
@@ -23,8 +20,6 @@ def index(request):
 def topics(request):
     """ The Topic page of the web application
     This is the overview of the topics.
-    :access:
-
     :param request:
     :return:
     """
@@ -32,8 +27,16 @@ def topics(request):
     context = {'topics': topics}
     return render(request, 'textEdit/topics.html', context)
 
-@login_required
 def topic(request, topic_id):
+    """ Overview of the topic selected
+    :param request:
+    :param topic_id:
+        - id of the topic viewed
+    :return:
+        - request
+        - template || /topic.html
+        - context
+    """
     topic = Topic.objects.get(id=topic_id)
 
     if topic.owner != request.user:
@@ -45,6 +48,13 @@ def topic(request, topic_id):
 
 @login_required
 def new_topic(request):
+    """ Page for creating a new topic
+    :param request:
+    :return:
+        - Request
+        - redirect to new topic
+        - context
+    """
     if request.method != 'POST':
         form = TopicForm()
     else:
@@ -60,6 +70,13 @@ def new_topic(request):
 
 @login_required
 def new_entry(request, topic_id):
+    """ Page for adding a entry to the selected topic
+    :param request:
+    :param topic_id:
+        - Topic where an entry is being added
+    :return:
+        - redirects || dest = textEdit:topic
+    """
     topic = Topic.objects.get(id=topic_id)
 
     if request.method != 'POST':
@@ -77,6 +94,12 @@ def new_entry(request, topic_id):
 
 @login_required
 def edit_entry(request, entry_id):
+    """ A page where the entries can be changed (not deleted)
+    :param request:
+    :param entry_id:
+    :return:
+        - redirects || dest = textEdit:topic
+    """
     entry = Entry.objects.get(id=entry_id)
     topic = entry.topic
 
@@ -91,3 +114,27 @@ def edit_entry(request, entry_id):
 
     context = {'entry': entry, 'topic': topic, 'form': form}
     return render(request, 'textEdit/edit_entry.html', context)
+
+@login_required
+def delete_topic(request, topic_id):
+    """ deletes the topic selected
+    :param request:
+    :param topic_id:
+    :return:
+        - redirects || dest = textEdit:topics
+    """
+    topic = Topic.objects.get(id=topic_id)
+    delete_topic = Topic.objects.get(pk=topic_id)
+
+    if topic.owner != request.user:
+        raise Http404
+    else:
+        delete_topic.delete()
+
+    return HttpResponseRedirect(reverse('textEdit:topics'))
+
+
+# TO DO:
+#     - page for deleting entries
+#     - page for seeing someone else his/her entries on the topic
+#     - page overview topics
