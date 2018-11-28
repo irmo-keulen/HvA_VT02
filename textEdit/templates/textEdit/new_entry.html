@@ -1,0 +1,13 @@
+{% extends "textEdit/base.html" %}
+
+{% block content %}
+
+    <p><a href="{% url 'textEdit:topic' topic.id %}">{{ topic }}</a> </p>
+    <p>Add a new Entry: </p>
+    <form action="{% url 'textEdit:new_entry' topic.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">add entry</button>
+    </form>
+
+{% endblock content %}
