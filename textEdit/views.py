@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from textEdit.models import Topic
+from textEdit.models import Topic, Entry
 from textEdit.forms import TopicForm, EntryForm
 
 
@@ -67,3 +67,20 @@ def new_entry(request, topic_id):
 
     context = {'topic': topic, 'form': form}
     return render(request, 'textEdit/new_entry.html', context)
+
+
+def edit_entry(request, entry_id):
+    entry = Entry.objects.get(id=entry_id)
+    topic = entry.topic
+
+    if request.method != 'POST':
+        form = EntryForm(instance=entry)
+
+    else:
+        form = EntryForm(instance=entry, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('textEdit:topic', args=[topic.id]))
+
+    context = {'entry': entry, 'topic': topic, 'form': form}
+    return render(request, 'textEdit/edit_entry.html', context)

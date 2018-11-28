@@ -12,6 +12,9 @@
             <li>
                 <p>{{ entry.date_added|date:'d M, Y H:i' }}</p>
                 <p>{{ entry.text|linebreaks  }}</p>
+                <p>
+                    <a href="{% url 'textEdit:edit_entry' entry.id %}">edit entry</a>
+                </p>
             </li>
             {% empty %}
                 <li>
