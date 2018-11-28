@@ -3,20 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e466ed12-7438-4a03-ad33-665060c6731f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VT02/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/VT02/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VT02/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/VT02/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/migrations/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/editor/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/textEdit/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/textEdit/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/textEdit/templates/textEdit/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/textEdit/templates/textEdit/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/textEdit/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/textEdit/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -116,7 +102,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/textEdit/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
+            <state relative-caret-position="874">
               <caret line="38" column="35" lean-forward="true" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -503,7 +489,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/textEdit/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
+        <state relative-caret-position="874">
           <caret line="38" column="35" lean-forward="true" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
