@@ -1,6 +1,19 @@
 {% extends "textEdit/base.html" %}
+
+{% block header %}
+    <div class='jumbotron'>
+        <h1>VT02</h1>
+    </div>
+{% endblock header %}
+
 {% block content %}
 
-    <h1> IndexPage</h1>
+    <p>
+        <a href="{% url 'users:register' %}"> Register an account</a> to access
+        everything on the website
+    </p>
+    <p>
+        This will make sure that you can make new topics and make entries
+    </p>
 
 {% endblock content %}
