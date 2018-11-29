@@ -133,6 +133,15 @@ def delete_topic(request, topic_id):
 
     return HttpResponseRedirect(reverse('textEdit:topics'))
 
+@login_required
+def delete_entry(request, entry_id):
+    entry = Entry.objects.get(id=entry_id)
+    delete_entry = Entry.objects.get(id=entry_id)
+
+    delete_entry.delete()
+
+    return HttpResponseRedirect(reverse('textEdit:topics'))
+
 
 # TO DO:
 #     - page for deleting entries
