@@ -16,6 +16,7 @@ def index(request):
     """
     return render(request, 'textEdit/index.html')
 
+
 @login_required
 def topics(request):
     """ The Topic page of the web application
@@ -26,6 +27,7 @@ def topics(request):
     topics = Topic.objects.filter(owner=request.user).order_by('date_added')
     context = {'topics': topics}
     return render(request, 'textEdit/topics.html', context)
+
 
 def topic(request, topic_id):
     """ Overview of the topic selected
@@ -45,6 +47,7 @@ def topic(request, topic_id):
     entries = topic.entry_set.order_by('-date_added')
     context = {'topic': topic, 'entries': entries}
     return render(request, 'textEdit/topic.html', context)
+
 
 @login_required
 def new_topic(request):
@@ -92,6 +95,7 @@ def new_entry(request, topic_id):
     context = {'topic': topic, 'form': form}
     return render(request, 'textEdit/new_entry.html', context)
 
+
 @login_required
 def edit_entry(request, entry_id):
     """ A page where the entries can be changed (not deleted)
@@ -115,6 +119,7 @@ def edit_entry(request, entry_id):
     context = {'entry': entry, 'topic': topic, 'form': form}
     return render(request, 'textEdit/edit_entry.html', context)
 
+
 @login_required
 def delete_topic(request, topic_id):
     """ deletes the topic selected
@@ -133,6 +138,7 @@ def delete_topic(request, topic_id):
 
     return HttpResponseRedirect(reverse('textEdit:topics'))
 
+
 @login_required
 def delete_entry(request, entry_id):
     entry = Entry.objects.get(id=entry_id)
@@ -141,7 +147,6 @@ def delete_entry(request, entry_id):
     delete_entry.delete()
 
     return HttpResponseRedirect(reverse('textEdit:topics'))
-
 
 # TO DO:
 #     - page for deleting entries
